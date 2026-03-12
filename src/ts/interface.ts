@@ -3,6 +3,12 @@ export interface InitGPUReturn {
   device: GPUDevice;
   context: GPUCanvasContext;
   format: GPUTextureFormat;
+  size: Size;
+}
+
+export interface Size {
+  width: number | undefined;
+  height: number| undefined;
 }
 
 export interface VertexObj {
@@ -11,14 +17,15 @@ export interface VertexObj {
   vertexCount: number;
 }
 
-export interface ColorObj { 
-  color: Float32Array<ArrayBuffer>,
+export interface ColorObj {
+  color: Float32Array<ArrayBuffer>;
   colorBuffer: GPUBuffer;
-  group: GPUBindGroup;
 }
 
 export interface InitPipeline {
   pipeline: GPURenderPipeline;
   vertexObj: VertexObj;
   colorObj: ColorObj;
+  uniformGroup: GPUBindGroup;
+  mvpMatrix: GPUBuffer;
 }
